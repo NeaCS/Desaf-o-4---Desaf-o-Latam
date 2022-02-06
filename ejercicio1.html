@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 1</title>
+  </head>
+
+  <body>
+    <div>
+      <div style="width: 40%; margin: 0 auto">
+        <h2>Escríbenos !!!</h2>
+        <div class="resultado" style="color: green; font-style: italic"></div>
+        <form id="formulario">
+          <div>
+            <div style="display: flex; flex-direction: column">
+              <label> Nombre completo </label>
+              <input id="nombre" type="text" />
+              <p class="errorNombre error" style="color: red; font-style: italic"></p>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <label> Asunto </label>
+              <input id="asunto" type="text" />
+              <p class="errorAsunto error" style="color: red; font-style: italic"></p>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <label> Mensaje </label>
+            <textarea id="mensaje"></textarea>
+            <p class="errorMensaje error" style="color: red; font-style: italic"></p>
+          </div>
+          <div>
+            <button id="botton" type="submit">Envíar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Escríbe aquí tu código
+
+      //Llamado al formulario
+      let formulario = document.getElementById("formulario");
+
+      //Funcion principal que valida con el evento submit
+
+      formulario.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        let nombre = document.getElementById("nombre");
+        let asunto = document.getElementById("asunto");
+        let mensaje = document.getElementById("mensaje");
+
+        if (
+          useRegex(nombre.value.trim()) == false ||
+          nombre.value.trim().length == 0
+        ) {
+          document.querySelector(".errorNombre").innerHTML =
+            "Datos incorrectos";
+        } else {
+          console.log("datos enviados");
+        }
+
+        if (
+          useRegex(asunto.value.trim()) == false ||
+          asunto.value.trim().length == 0
+        ) {
+          document.querySelector(".errorAsunto").innerHTML =
+            "Datos incorrectos";
+        } else {
+          console.log("datos enviados");
+    
+        }
+        if (
+          useRegex(mensaje.value.trim()) == false ||
+          mensaje.value.trim().length == 0
+        ) {
+          document.querySelector(".errorMensaje").innerHTML =
+            "Datos incorrectos";
+        } else {
+          console.log("datos enviados");
+  
+        }
+
+        // condicional que revisa si todos los datos están correctamente ingresados
+
+        if (
+          useRegex(nombre.value.trim()) == true &&
+          useRegex(asunto.value.trim()) == true &&
+          useRegex(mensaje.value.trim()) == true
+        ) { 
+        document.querySelector(".error").innerHTML = "";
+        document.querySelector(".resultado").innerHTML = "Datos enviados";
+        
+        }
+
+          
+
+          
+        }
+      );
+
+      // Función que teste el regex correspondiente
+
+      const useRegex = (input) => {
+        let regex = /[a-zA-Z]+$/;
+        return regex.test(input);
+      };
+    </script>
+  </body>
+</html>
