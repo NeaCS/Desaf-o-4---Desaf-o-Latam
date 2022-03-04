@@ -43,7 +43,7 @@
         const caja = document.getElementById("caja");
 
         todosLosBotones.forEach(e => {
-            e.addEventListener('mouseover', function () {
+            e.addEventListener('mouseover', () => {
                 caja.style.backgroundColor = e.style.backgroundColor;
             });
         });
